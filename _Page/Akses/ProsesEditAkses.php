@@ -95,7 +95,9 @@
                                             $Ext=$Pecah[1];
                                             $namabaru = "$FileNameRand.$Ext";
                                             $path = "../../assets/img/User/".$namabaru;
-                                            if($tipe_gambar == "image/jpeg"||tipe_gambar == "image/jpg"||$tipe_gambar == "image/gif"||$tipe_gambar == "image/png"){
+                                            $allowed_types = ["image/jpeg", "image/jpg", "image/gif", "image/png"];
+if (in_array($tipe_gambar, $allowed_types)) {
+
                                                 if($ukuran_gambar<2000000){
                                                     if(move_uploaded_file($tmp_gambar, $path)){
                                                         $ValidasiGambar="Valid";

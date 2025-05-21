@@ -75,7 +75,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="status">Status Transaksi</label>
                                 <select name="status" id="status" class="form-control">
-                                    <option value="">Pilih</option>
+                                    <option value="">Lunas</option>
                                 </select>
                             </div>
                         </div>
