@@ -99,7 +99,7 @@
 if (in_array($tipe_gambar, $allowed_types)) {
 
                                                 if($ukuran_gambar<2000000){
-                                                    if(move_uploaded_file($tmp_gambar, $path)){
+                                                     if(move_uploaded_file($tmp_gambar, $path)){
                                                         $ValidasiGambar="Valid";
                                                     }else{
                                                         $ValidasiGambar="Upload gambar gagal";

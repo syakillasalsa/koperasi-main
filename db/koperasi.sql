@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2025 at 10:30 AM
+-- Generation Time: May 22, 2025 at 02:05 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -45,7 +45,8 @@ CREATE TABLE `akses` (
 --
 
 INSERT INTO `akses` (`id_akses`, `nama_akses`, `kontak_akses`, `email_akses`, `password`, `image_akses`, `akses`, `status`, `datetime_daftar`, `datetime_update`) VALUES
-(44, 'Ajeng Dhiyaa Putri Qonita', '089503888083', 'ajeng@gmail.com', 'df7d5c01a181a1480f9d4e72b2126411', 'fee4676f8a6a81b9419ffc9d8f6d8b.png', 'Admin', 'Active', '2025-04-22 14:16:36', '2025-05-16 09:16:55');
+(44, 'admin2', '089503888083', 'admin2@gmail.com', 'df7d5c01a181a1480f9d4e72b2126411', 'ab3dbc285eb6e490167d6148d655c4.jpg', 'Admin', 'Active', '2025-04-22 14:16:36', '2025-05-22 19:01:20'),
+(47, 'koperasikai', '087818316003', 'koperasikai@gmail.com', '78edc8fcabc202d8f9339d937b7b3703', '99b2bcc5820d36e471e4ec34a3b632.jpg', 'Admin', 'Active', '2025-05-22 18:56:28', '2025-05-22 14:05:15');
 
 -- --------------------------------------------------------
 
@@ -70,8 +71,10 @@ CREATE TABLE `akses_anggota` (
 --
 
 INSERT INTO `akses_anggota` (`id_akses_anggota`, `id_anggota`, `tanggal`, `nama_anggota`, `email`, `kontak`, `password`, `status`, `photo_profile`) VALUES
-(18, 33, '2025-04-22 14:29:50', 'ajeng21', 'ajeng2@gmail.com', '895123456', '5dbee4adaaf1d83e95a9ffe54165dc97', 'Active', NULL),
-(20, 34, '2025-05-02 10:26:04', 'ajeng', 'ajeng1@gmail.com', '0812367', '5dbee4adaaf1d83e95a9ffe54165dc97', 'Active', '');
+(21, 35, '2025-05-22 18:58:47', 'anggota1', 'anggota1@gmail.com', '087818316001', '7094ed9b0059aba4cd72e81577229914', 'Active', ''),
+(22, 36, '2025-05-22 18:59:55', 'anggota2', 'anggota2@gmail.com', '087818316002', 'e7dd32332153b9a2e903ae3b164e1630', 'Active', ''),
+(23, 33, '2025-05-22 19:04:04', 'anggota3', 'anggota3@gmail.com', '08191010011', '3d07f1dc0344782f3ee443437ae0cf6b', 'Active', ''),
+(24, 34, '2025-05-22 19:04:39', 'anggota4', 'anggota4@gmail.com', '0895123456', '4f4eec1ce4c94ac0b110f7d05baedb58', 'Active', '');
 
 -- --------------------------------------------------------
 
@@ -168,6 +171,31 @@ CREATE TABLE `akses_ijin` (
 --
 
 INSERT INTO `akses_ijin` (`id_akses`, `akses`, `kode_akses`) VALUES
+(47, 'Admin', 'AKEM'),
+(47, 'Admin', 'AKP'),
+(47, 'Admin', 'AKS'),
+(47, 'Admin', 'AKUM'),
+(47, 'Admin', 'ANG'),
+(47, 'Admin', 'ATJR'),
+(47, 'Admin', 'BGH'),
+(47, 'Admin', 'BKBS'),
+(47, 'Admin', 'BNT'),
+(47, 'Admin', 'BTE'),
+(47, 'Admin', 'DKM'),
+(47, 'Admin', 'EML'),
+(47, 'Admin', 'ETAK'),
+(47, 'Admin', 'JRNL'),
+(47, 'Admin', 'LBRG'),
+(47, 'Admin', 'NRC'),
+(47, 'Admin', 'PMB'),
+(47, 'Admin', 'PNJM'),
+(47, 'Admin', 'RKP'),
+(47, 'Admin', 'SMB'),
+(47, 'Admin', 'SMPN'),
+(47, 'Admin', 'SPP'),
+(47, 'Admin', 'TNT'),
+(47, 'Admin', 'TRANS'),
+(47, 'Admin', 'UMM'),
 (44, 'Admin', 'AKEM'),
 (44, 'Admin', 'AKP'),
 (44, 'Admin', 'AKS'),
@@ -372,8 +400,10 @@ CREATE TABLE `anggota` (
 --
 
 INSERT INTO `anggota` (`id_anggota`, `tanggal_masuk`, `nip`, `nama`, `email`, `kontak`, `image`, `status`) VALUES
-(33, '2025-04-22', 'RSES.125.009', 'ajeng21', 'ajeng2@gmail.com', '895123456', '', 'Active'),
-(34, '2025-05-02', '123', 'ajeng', 'ajeng1@gmail.com', '08191010', '', 'Active');
+(33, '2025-04-22', 'RSES.125.009', 'anggota4', 'anggota3@gmail.com', '0895123456', '', 'Active'),
+(34, '2025-05-02', '123', 'anggota3', 'anggota4@gmail.com', '08191010011', '', 'Active'),
+(35, '2025-04-27', '11', 'Anggota1', 'anggota1@gmail.com', '087818316001', 'd031984e503ab6c4962cbbe513cd8e.jpg', 'Active'),
+(36, '2025-04-27', '22', 'anggota2', 'anggota2@gmail.com', '087818316002', 'cf60875a2f429f83e58acb8c9496cf.jpg', 'Active');
 
 -- --------------------------------------------------------
 
@@ -1652,7 +1682,30 @@ INSERT INTO `log` (`id_log`, `id_akses`, `datetime_log`, `kategori_log`, `deskri
 (831, 44, '2025-05-07 09:33:23', 'Login', 'ajeng@gmail.com Berhasil Melakukan Login'),
 (832, 44, '2025-05-16 12:22:22', 'Login', 'ajeng@gmail.com Berhasil Melakukan Login'),
 (833, 44, '2025-05-16 12:26:10', 'Tabungan', 'Tambah Data Simpanan Sukarela'),
-(834, 44, '2025-05-16 12:28:19', 'Pinjaman', 'Tambah Pinjaman Berhasil    ');
+(834, 44, '2025-05-16 12:28:19', 'Pinjaman', 'Tambah Pinjaman Berhasil    '),
+(835, 44, '2025-05-22 18:55:25', 'Login', 'ajeng@gmail.com Berhasil Melakukan Login'),
+(836, 44, '2025-05-22 18:56:28', 'Input Akses Baru', 'Input Akses Baru Berhasil'),
+(837, 44, '2025-05-22 18:57:29', 'Angggota', 'Tambah Anggota baru'),
+(838, 44, '2025-05-22 18:58:01', 'Angggota', 'Tambah Anggota baru'),
+(839, 44, '2025-05-22 18:58:47', 'Angggota', 'Tambah Akses Anggota'),
+(840, 44, '2025-05-22 18:59:04', 'Angggota', 'Edit Anggota Berhasil'),
+(841, 44, '2025-05-22 18:59:17', 'Angggota', 'Update Akses Anggota Berhasil'),
+(842, 44, '2025-05-22 18:59:55', 'Angggota', 'Tambah Akses Anggota'),
+(843, 44, '2025-05-22 19:00:02', 'Angggota', 'Update Akses Anggota Berhasil'),
+(844, 44, '2025-05-22 19:00:02', 'Angggota', 'Update Akses Anggota Berhasil'),
+(845, 47, '2025-05-22 19:00:36', 'Login', 'koperasikai@gmail.com Berhasil Melakukan Login'),
+(846, 47, '2025-05-22 19:01:20', 'Akses', 'Edit Akses Berhasil'),
+(847, 47, '2025-05-22 19:02:08', 'Angggota', 'Edit Anggota Berhasil'),
+(848, 47, '2025-05-22 19:02:38', 'Angggota', 'Edit Anggota Berhasil'),
+(849, 47, '2025-05-22 19:02:38', 'Angggota', 'Edit Anggota Berhasil'),
+(850, 47, '2025-05-22 19:02:55', 'Angggota', 'Hapus Akses Anggota Berhasil'),
+(851, 47, '2025-05-22 19:03:00', 'Angggota', 'Hapus Akses Anggota Berhasil'),
+(852, 47, '2025-05-22 19:03:00', 'Angggota', 'Hapus Akses Anggota Berhasil'),
+(853, 47, '2025-05-22 19:04:04', 'Angggota', 'Tambah Akses Anggota'),
+(854, 47, '2025-05-22 19:04:39', 'Angggota', 'Tambah Akses Anggota'),
+(855, 47, '2025-05-22 19:04:46', 'Angggota', 'Update Akses Anggota Berhasil'),
+(856, 47, '2025-05-22 19:04:53', 'Angggota', 'Update Akses Anggota Berhasil'),
+(857, 47, '2025-05-22 19:04:53', 'Angggota', 'Update Akses Anggota Berhasil');
 
 -- --------------------------------------------------------
 
@@ -2545,13 +2598,13 @@ ALTER TABLE `transaksi_setting`
 -- AUTO_INCREMENT for table `akses`
 --
 ALTER TABLE `akses`
-  MODIFY `id_akses` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id_akses` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `akses_anggota`
 --
 ALTER TABLE `akses_anggota`
-  MODIFY `id_akses_anggota` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_akses_anggota` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `akses_entitas`
@@ -2581,7 +2634,7 @@ ALTER TABLE `akun_perkiraan`
 -- AUTO_INCREMENT for table `anggota`
 --
 ALTER TABLE `anggota`
-  MODIFY `id_anggota` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_anggota` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `auto_jurnal`
@@ -2647,7 +2700,7 @@ ALTER TABLE `jurnal`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id_log` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=835;
+  MODIFY `id_log` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=858;
 
 --
 -- AUTO_INCREMENT for table `log_email`
