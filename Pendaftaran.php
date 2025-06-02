@@ -92,7 +92,7 @@
                                             &copy; Copyright <strong><span><?php echo "$title_page"; ?></span></strong>. All Rights Reserved 2023
                                         </div>
                                         <div class="credits">
-                                            Designed by <a href="https://parasilva.site" class="text-light">Parasilva Technology</a>
+                                            Designed by <a href="https://www.kai.id/" class="text-light">Koperasi Kereta Api Indonesia</a>
                                         </div>
                                     </small>
                             </div>

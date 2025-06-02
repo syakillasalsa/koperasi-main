@@ -8,6 +8,6 @@
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
         <a href="index.php?Page=Version" class="text-light">Kopkai 1.2</a> 
-        Designed by <a href="https://parasilva.site" class="text-light">Kereta Api Indonesia</a>
+        Designed by <a href="https://www.kai.id/" class="text-light">Kereta Api Indonesia</a>
     </div>
 </footer>

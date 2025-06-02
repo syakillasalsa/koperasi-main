@@ -5,7 +5,7 @@
             <?php
                 echo '<div class="alert alert-info alert-dismissible fade show" role="alert">';
                 echo '  Fitur ini hanya berlaku untuk akses anggota.';
-                echo '  Untuk poengurus, anda harus menghubungi admin untuk lupa password ini.';
+                echo '  Untuk pengurus, anda harus menghubungi admin untuk lupa password ini.';
                 echo '  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
                 echo '</div>';
             ?>

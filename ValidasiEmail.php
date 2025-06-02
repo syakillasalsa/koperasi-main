@@ -84,8 +84,8 @@
 
                                 <div class="credits">
                                     <div class="copyright text-white">
-                                        &copy; Copyright <strong><span><?php echo "$title_page"; ?></span></strong>. All Rights Reserved 2023
-                                        Designed by <a href="https://parasilva.site" class="text-light">Parasilva Technology</a>
+                                        &copy; Copyright <strong><span><?php echo "$title_page"; ?></span></strong>. All Rights Reserved 2025
+                                        Designed by <a href="https://www.kai.id/" class="text-light">Koperasi Kereta Api Indonesia</a>
                                     </div>
                                 </div>
                             </div>
