@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2025 at 02:05 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Jun 02, 2025 at 06:43 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `akses` (
-  `id_akses` int(10) NOT NULL,
+  `id_akses` int(11) NOT NULL,
   `nama_akses` text NOT NULL,
   `kontak_akses` varchar(20) DEFAULT NULL,
   `email_akses` text NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE `akses` (
 
 INSERT INTO `akses` (`id_akses`, `nama_akses`, `kontak_akses`, `email_akses`, `password`, `image_akses`, `akses`, `status`, `datetime_daftar`, `datetime_update`) VALUES
 (44, 'admin2', '089503888083', 'admin2@gmail.com', 'df7d5c01a181a1480f9d4e72b2126411', 'ab3dbc285eb6e490167d6148d655c4.jpg', 'Admin', 'Active', '2025-04-22 14:16:36', '2025-05-22 19:01:20'),
-(47, 'koperasikai', '087818316003', 'koperasikai@gmail.com', '78edc8fcabc202d8f9339d937b7b3703', '99b2bcc5820d36e471e4ec34a3b632.jpg', 'Admin', 'Active', '2025-05-22 18:56:28', '2025-05-22 14:05:15');
+(47, 'koperasikai', '087818316003', 'koperasikai@gmail.com', '78edc8fcabc202d8f9339d937b7b3703', '99b2bcc5820d36e471e4ec34a3b632.jpg', 'Admin', 'Active', '2025-05-22 18:56:28', '2025-06-02 05:17:31');
 
 -- --------------------------------------------------------
 
@@ -55,8 +55,8 @@ INSERT INTO `akses` (`id_akses`, `nama_akses`, `kontak_akses`, `email_akses`, `p
 --
 
 CREATE TABLE `akses_anggota` (
-  `id_akses_anggota` int(15) NOT NULL,
-  `id_anggota` int(15) DEFAULT NULL,
+  `id_akses_anggota` int(11) NOT NULL,
+  `id_anggota` int(11) DEFAULT NULL,
   `tanggal` varchar(30) NOT NULL,
   `nama_anggota` text NOT NULL,
   `email` text NOT NULL,
@@ -83,7 +83,7 @@ INSERT INTO `akses_anggota` (`id_akses_anggota`, `id_anggota`, `tanggal`, `nama_
 --
 
 CREATE TABLE `akses_entitas` (
-  `id_akses_entitas` int(10) NOT NULL,
+  `id_akses_entitas` int(11) NOT NULL,
   `akses` varchar(20) NOT NULL,
   `kode_akses` varchar(10) DEFAULT NULL,
   `class_label` varchar(20) DEFAULT NULL
@@ -229,7 +229,7 @@ INSERT INTO `akses_ijin` (`id_akses`, `akses`, `kode_akses`) VALUES
 --
 
 CREATE TABLE `akses_referensi` (
-  `id_akses_referensi` int(15) NOT NULL,
+  `id_akses_referensi` int(11) NOT NULL,
   `kode_referensi` varchar(20) NOT NULL,
   `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -273,8 +273,8 @@ INSERT INTO `akses_referensi` (`id_akses_referensi`, `kode_referensi`, `keterang
 --
 
 CREATE TABLE `akses_validasi` (
-  `id_akses_validasi` int(10) NOT NULL,
-  `id_akses_anggota` int(20) NOT NULL,
+  `id_akses_validasi` int(11) NOT NULL,
+  `id_akses_anggota` int(11) NOT NULL,
   `token` text NOT NULL,
   `datetime` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -295,9 +295,9 @@ INSERT INTO `akses_validasi` (`id_akses_validasi`, `id_akses_anggota`, `token`, 
 --
 
 CREATE TABLE `akun_perkiraan` (
-  `id_perkiraan` int(10) NOT NULL,
+  `id_perkiraan` int(11) NOT NULL,
   `kode` varchar(25) DEFAULT NULL,
-  `rank` int(10) DEFAULT NULL,
+  `rank` int(11) DEFAULT NULL,
   `nama` text DEFAULT NULL,
   `level` varchar(10) DEFAULT NULL,
   `saldo_normal` varchar(25) DEFAULT NULL,
@@ -385,7 +385,7 @@ INSERT INTO `akun_perkiraan` (`id_perkiraan`, `kode`, `rank`, `nama`, `level`, `
 --
 
 CREATE TABLE `anggota` (
-  `id_anggota` int(15) NOT NULL,
+  `id_anggota` int(11) NOT NULL,
   `tanggal_masuk` varchar(30) NOT NULL,
   `nip` text DEFAULT NULL,
   `nama` text NOT NULL,
@@ -412,11 +412,11 @@ INSERT INTO `anggota` (`id_anggota`, `tanggal_masuk`, `nip`, `nama`, `email`, `k
 --
 
 CREATE TABLE `auto_jurnal` (
-  `id_auto_jurnal` int(15) NOT NULL,
+  `id_auto_jurnal` int(11) NOT NULL,
   `kategori_transaksi` text NOT NULL,
-  `debet_id` int(15) NOT NULL,
+  `debet_id` int(11) NOT NULL,
   `debet_name` text NOT NULL,
-  `kredit_id` int(15) NOT NULL,
+  `kredit_id` int(11) NOT NULL,
   `kredit_name` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -437,14 +437,14 @@ INSERT INTO `auto_jurnal` (`id_auto_jurnal`, `kategori_transaksi`, `debet_id`, `
 --
 
 CREATE TABLE `barang` (
-  `id_barang` int(10) NOT NULL,
+  `id_barang` int(11) NOT NULL,
   `kode_barang` varchar(25) NOT NULL,
   `nama_barang` text NOT NULL,
   `kategori_barang` varchar(20) NOT NULL,
   `satuan_barang` varchar(20) NOT NULL,
-  `konversi` int(10) NOT NULL,
-  `harga_beli` int(10) DEFAULT NULL,
-  `stok_barang` int(10) DEFAULT NULL
+  `konversi` int(11) NOT NULL,
+  `harga_beli` int(11) DEFAULT NULL,
+  `stok_barang` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -452,25 +452,25 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id_barang`, `kode_barang`, `nama_barang`, `kategori_barang`, `satuan_barang`, `konversi`, `harga_beli`, `stok_barang`) VALUES
-(1, '9415007034414', 'Boneeto Stoberi 115ml', 'MNM', 'KTK', 1, 2600, 87),
+(1, '9415007034414', 'Boneeto Stoberi 115ml', 'MNM', 'KTK', 1, 2600, 86),
 (4, '9311931201208', 'Max Tea Tarik', 'MNM', 'RCG', 1, 15250, 100),
-(15, '8999999530341', 'Citra Rcg 9ml', 'KC', 'RCG', 1, 4500, 100),
+(15, '8999999530341', 'Citra Rcg 9ml', 'KC', 'RCG', 1, 4500, 98),
 (30, '8999999526894', 'Rinso Molto Cair Royal Gold', 'BC', 'RCG', 1, 4830, 100),
 (39, '8999999518516', 'Molto Detergen cair glowing Elegance 700ml', 'Lainnya', 'REF', 1, 14375, 100),
 (42, '8999999514518', 'Rinso Cair Essence Pouch', 'BC', 'PCH', 1, 4074, 100),
-(45, '8999999514006', 'Bango Manis 60ml', 'BD', 'pcs', 1, 2400, 78),
+(45, '8999999514006', 'Bango Manis 60ml', 'BD', 'pcs', 1, 2400, 77),
 (57, '8999999390181', 'Sunlight Lime 400ml', 'BC', 'PCH', 1, 9000, 100),
 (61, '8999999059781', 'Sunlight Lime Pouch 210ml', 'BC', 'REF', 1, 4300, 100),
 (64, '8999999059316', 'Lifebuoy Mild Care 80g', 'KC', 'BH', 1, 2700, 100),
 (73, '8999999052959', 'Pons White Beauty Foam 50g', 'BC', 'TUB', 1, 16300, 100),
 (74, '8999999050009', 'Sunlight Lime Pouch 95ml', 'BC', 'BKS', 1, 1600, 98),
-(75, '8999999049669', 'Rexona Motionsense', 'BC', 'BH', 1, 13550, 100),
-(79, '8999999049034', 'Sunlight Lime Pouch 45ml', 'BC', 'SCH', 1, 825, 100),
+(75, '8999999049669', 'Rexona Motionsense', 'BC', 'BH', 1, 13550, 150),
+(79, '8999999049034', 'Sunlight Lime Pouch 45ml', 'BC', 'SCH', 1, 3000, 100),
 (83, '8999999036904', 'Lux Velvet Pouch 250ml', 'BC', 'PCS', 1, 12112, 100),
 (84, '8999999036898', 'Lux Soft Rose 250ml', 'BC', 'REF', 1, 12114, 100),
-(91, '8999999034153', 'Blue Band Serbaguna 200g', 'MKN', 'PCS', 1, 6733333, 109),
+(91, '8999999034153', 'Blue Band Serbaguna 200g', 'MKN', 'PCS', 1, 7500, 103),
 (96, '8999999027278', 'Lifebuoy Lemon Fresh 250ml', 'BC', 'REF', 1, 13150, 100),
-(98, '8999999027049', 'Lifebuoy Hairfall Trmt 9ml', 'BC', 'RCG', 1, 2250, 97),
+(98, '8999999027049', 'Lifebuoy Hairfall Trmt 9ml', 'BC', 'RCG', 1, 3500, 97),
 (100, '2345654631', 'Pulsa Telkomsel 5000', 'Pulsa', 'Rp', 1, 5000, 200);
 
 -- --------------------------------------------------------
@@ -480,9 +480,9 @@ INSERT INTO `barang` (`id_barang`, `kode_barang`, `nama_barang`, `kategori_baran
 --
 
 CREATE TABLE `barang_bacth` (
-  `id_barang_bacth` int(10) NOT NULL,
-  `id_barang` int(10) NOT NULL,
-  `id_barang_satuan` int(10) NOT NULL,
+  `id_barang_bacth` int(11) NOT NULL,
+  `id_barang` int(11) NOT NULL,
+  `id_barang_satuan` int(11) NOT NULL,
   `kode_barang` varchar(20) NOT NULL,
   `nama_barang` text NOT NULL,
   `satuan` varchar(20) NOT NULL,
@@ -508,11 +508,11 @@ INSERT INTO `barang_bacth` (`id_barang_bacth`, `id_barang`, `id_barang_satuan`, 
 --
 
 CREATE TABLE `barang_harga` (
-  `id_barang_harga` int(10) NOT NULL,
-  `id_barang` int(10) NOT NULL,
-  `id_barang_satuan` int(10) DEFAULT NULL,
+  `id_barang_harga` int(11) NOT NULL,
+  `id_barang` int(11) NOT NULL,
+  `id_barang_satuan` int(11) DEFAULT NULL,
   `kategori_harga` text NOT NULL,
-  `harga` int(10) DEFAULT NULL
+  `harga` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -607,7 +607,7 @@ INSERT INTO `barang_harga` (`id_barang_harga`, `id_barang`, `id_barang_satuan`, 
 (98, 76, 0, 'Eceran', 13550),
 (99, 77, 0, 'Eceran', 13550),
 (100, 78, 0, 'Eceran', 13550),
-(101, 79, 0, 'Eceran', 825),
+(101, 79, 0, 'Eceran', 3500),
 (102, 80, 0, 'Eceran', 4830),
 (103, 81, 0, 'Eceran', 4830),
 (104, 82, 0, 'Eceran', 12114),
@@ -618,15 +618,15 @@ INSERT INTO `barang_harga` (`id_barang_harga`, `id_barang`, `id_barang_satuan`, 
 (109, 87, 0, 'Eceran', 2800),
 (110, 88, 0, 'Eceran', 2800),
 (111, 89, 0, 'Eceran', 2800),
-(112, 91, 0, 'Eceran', 6733333),
+(112, 91, 0, 'Eceran', 8000),
 (113, 92, 0, 'Eceran', 6850),
 (114, 93, 0, 'Eceran', 6850),
 (115, 94, 0, 'Eceran', 6850),
 (116, 95, 0, 'Eceran', 783125),
 (117, 96, 0, 'Eceran', 13150),
 (118, 97, 0, 'Eceran', 22000),
-(120, 98, 0, 'Eceran', 5000),
-(121, 98, 19, 'Eceran', 50000),
+(120, 98, 0, 'Eceran', 4000),
+(121, 98, 19, 'Eceran', 4000),
 (123, 98, 19, '', 25000),
 (124, 97, 21, '', 200000),
 (125, 97, 21, 'Eceran', 220000),
@@ -640,7 +640,7 @@ INSERT INTO `barang_harga` (`id_barang_harga`, `id_barang`, `id_barang_satuan`, 
 --
 
 CREATE TABLE `barang_kategori_harga` (
-  `id_barang_kategori_harga` int(15) NOT NULL,
+  `id_barang_kategori_harga` int(11) NOT NULL,
   `kategori_harga` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -658,12 +658,12 @@ INSERT INTO `barang_kategori_harga` (`id_barang_kategori_harga`, `kategori_harga
 --
 
 CREATE TABLE `barang_satuan` (
-  `id_barang_satuan` int(10) NOT NULL,
-  `id_barang` int(10) NOT NULL,
+  `id_barang_satuan` int(11) NOT NULL,
+  `id_barang` int(11) NOT NULL,
   `kode_barang` varchar(25) NOT NULL,
   `satuan_multi` varchar(20) NOT NULL,
-  `konversi_multi` int(10) DEFAULT NULL,
-  `stok_multi` int(10) DEFAULT NULL
+  `konversi_multi` int(11) DEFAULT NULL,
+  `stok_multi` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -674,7 +674,7 @@ INSERT INTO `barang_satuan` (`id_barang_satuan`, `id_barang`, `kode_barang`, `sa
 (1, 4, '909', 'Krat', 10, 10),
 (2, 4, '909', 'Dus', 100, 1),
 (3, 3, '9032', 'Dus', 100, 1),
-(5, 1, '906', 'Strip', 4, 25),
+(5, 1, '906', 'Strip', 4, 22),
 (6, 1, '906', 'Dus', 400, 0),
 (7, 5, '108837348547', 'Strip', 4, 350),
 (8, 5, '108837348547', 'Box', 40, 35),
@@ -692,7 +692,7 @@ INSERT INTO `barang_satuan` (`id_barang_satuan`, `id_barang`, `kode_barang`, `sa
 --
 
 CREATE TABLE `dokumentasi_api` (
-  `id_dokumentasi_api` int(10) NOT NULL,
+  `id_dokumentasi_api` int(11) NOT NULL,
   `updatetime_api` varchar(25) NOT NULL,
   `judul_api` text NOT NULL,
   `kategori_api` varchar(20) NOT NULL,
@@ -742,7 +742,7 @@ INSERT INTO `dokumentasi_api` (`id_dokumentasi_api`, `updatetime_api`, `judul_ap
 --
 
 CREATE TABLE `help` (
-  `id_help` int(10) NOT NULL,
+  `id_help` int(11) NOT NULL,
   `title` text NOT NULL,
   `category` text NOT NULL,
   `description` longtext NOT NULL,
@@ -763,8 +763,8 @@ INSERT INTO `help` (`id_help`, `title`, `category`, `description`, `datetime`) V
 --
 
 CREATE TABLE `help_access` (
-  `id_help_access` int(10) NOT NULL,
-  `id_help` int(10) NOT NULL,
+  `id_help_access` int(11) NOT NULL,
+  `id_help` int(11) NOT NULL,
   `akses` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -793,18 +793,18 @@ INSERT INTO `help_access` (`id_help_access`, `id_help`, `akses`) VALUES
 --
 
 CREATE TABLE `jurnal` (
-  `id_jurnal` int(20) NOT NULL,
-  `id_transaksi` int(20) DEFAULT NULL,
-  `id_simpanan` int(20) DEFAULT NULL,
-  `id_pinjaman` int(15) DEFAULT NULL,
-  `id_pinjaman_angsuran` int(15) DEFAULT NULL,
-  `id_shu_session` int(15) DEFAULT NULL,
-  `id_perkiraan` int(20) DEFAULT NULL,
+  `id_jurnal` int(11) NOT NULL,
+  `id_transaksi` int(11) DEFAULT NULL,
+  `id_simpanan` int(11) DEFAULT NULL,
+  `id_pinjaman` int(11) DEFAULT NULL,
+  `id_pinjaman_angsuran` int(11) DEFAULT NULL,
+  `id_shu_session` int(11) DEFAULT NULL,
+  `id_perkiraan` int(11) DEFAULT NULL,
   `tanggal` varchar(25) DEFAULT NULL,
   `kode_perkiraan` varchar(20) DEFAULT NULL,
   `nama_perkiraan` text DEFAULT NULL,
   `d_k` varchar(10) DEFAULT NULL,
-  `nilai` int(15) DEFAULT NULL
+  `nilai` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -822,12 +822,16 @@ INSERT INTO `jurnal` (`id_jurnal`, `id_transaksi`, `id_simpanan`, `id_pinjaman`,
 (89, 0, 0, 4, 8, NULL, 155, '2023-02-23 14:49:03', '1.1.1.1.1', 'Kas Brangkas', 'Debet', 100000),
 (90, 0, 0, 4, 9, NULL, 136, '2023-02-23 14:49:13', '1.1.3', 'Piutang usaha', 'Kredit', 100000),
 (91, 0, 0, 4, 9, NULL, 155, '2023-02-23 14:49:13', '1.1.1.1.1', 'Kas Brangkas', 'Debet', 100000),
-(92, 0, 19, 0, 0, NULL, 136, '2025-04-22', '1.1.3', 'Piutang usaha', 'Kredit', 2000000),
-(93, 0, 19, 0, 0, NULL, 135, '2025-04-22', '1.1.1.3', 'Kas Berangkas', 'Debet', 2000000),
-(96, 0, 20, 0, 0, NULL, 136, '2025-05-16', '1.1.3', 'Piutang usaha', 'Kredit', 15000000),
-(97, 0, 20, 0, 0, NULL, 135, '2025-05-16', '1.1.1.3', 'Kas Berangkas', 'Debet', 15000000),
-(98, 0, 0, 1, 0, NULL, 135, '2025-05-16', '1.1.1.3', 'Kas Berangkas', 'Kredit', 12000),
-(99, 0, 0, 1, 0, NULL, 136, '2025-05-16', '1.1.3', 'Piutang usaha', 'Debet', 12000);
+(100, 0, 1, 0, 0, NULL, 136, '2025-05-28', '1.1.3', 'Piutang usaha', 'Kredit', 150000),
+(101, 0, 1, 0, 0, NULL, 135, '2025-05-28', '1.1.1.3', 'Kas Berangkas', 'Debet', 150000),
+(102, 0, 2, 0, 0, NULL, 136, '2025-05-28', '1.1.3', 'Piutang usaha', 'Kredit', 250000),
+(103, 0, 2, 0, 0, NULL, 135, '2025-05-28', '1.1.1.3', 'Kas Berangkas', 'Debet', 250000),
+(104, 0, 3, 0, 0, NULL, 136, '2025-05-28', '1.1.3', 'Piutang usaha', 'Kredit', 200000),
+(105, 0, 3, 0, 0, NULL, 135, '2025-05-28', '1.1.1.3', 'Kas Berangkas', 'Debet', 200000),
+(106, 0, 0, 1, 0, NULL, 135, '2025-05-28', '1.1.1.3', 'Kas Berangkas', 'Kredit', 1500000),
+(107, 0, 0, 1, 0, NULL, 136, '2025-05-28', '1.1.3', 'Piutang usaha', 'Debet', 1500000),
+(108, 0, 0, 2, 0, NULL, 135, '2025-05-28', '1.1.1.3', 'Kas Berangkas', 'Kredit', 2000000),
+(109, 0, 0, 2, 0, NULL, 136, '2025-05-28', '1.1.3', 'Piutang usaha', 'Debet', 2000000);
 
 -- --------------------------------------------------------
 
@@ -836,8 +840,8 @@ INSERT INTO `jurnal` (`id_jurnal`, `id_transaksi`, `id_simpanan`, `id_pinjaman`,
 --
 
 CREATE TABLE `log` (
-  `id_log` int(10) NOT NULL,
-  `id_akses` int(10) NOT NULL,
+  `id_log` int(11) NOT NULL,
+  `id_akses` int(11) NOT NULL,
   `datetime_log` varchar(25) NOT NULL,
   `kategori_log` varchar(20) NOT NULL,
   `deskripsi_log` text NOT NULL
@@ -1705,7 +1709,28 @@ INSERT INTO `log` (`id_log`, `id_akses`, `datetime_log`, `kategori_log`, `deskri
 (854, 47, '2025-05-22 19:04:39', 'Angggota', 'Tambah Akses Anggota'),
 (855, 47, '2025-05-22 19:04:46', 'Angggota', 'Update Akses Anggota Berhasil'),
 (856, 47, '2025-05-22 19:04:53', 'Angggota', 'Update Akses Anggota Berhasil'),
-(857, 47, '2025-05-22 19:04:53', 'Angggota', 'Update Akses Anggota Berhasil');
+(857, 47, '2025-05-22 19:04:53', 'Angggota', 'Update Akses Anggota Berhasil'),
+(858, 47, '2025-05-28 10:43:20', 'Login', 'koperasikai@gmail.com Berhasil Melakukan Login'),
+(859, 47, '2025-05-28 11:09:27', 'Transaksi', 'Input Transaksi  18 Berhasil'),
+(860, 47, '2025-05-28 11:10:34', 'Transaksi', 'Edit Transaksi  18 Berhasil'),
+(861, 47, '2025-05-28 11:29:44', 'Tabungan', 'Tambah Data Simpanan Pokok'),
+(862, 47, '2025-05-28 11:30:29', 'Tabungan', 'Tambah Data Simpanan Wajib'),
+(863, 47, '2025-05-28 11:30:51', 'Tabungan', 'Tambah Data Simpanan Sukarela'),
+(864, 47, '2025-05-28 11:31:08', 'Pinjaman', 'Hapus Data Pinjaman'),
+(865, 47, '2025-05-28 11:33:08', 'Pinjaman', 'Tambah Pinjaman Berhasil    '),
+(866, 47, '2025-05-28 11:33:51', 'Pinjaman', 'Tambah Pinjaman Berhasil    '),
+(867, 47, '2025-05-28 11:47:41', 'Transaksi', 'Input Transaksi  19 Berhasil'),
+(868, 47, '2025-05-28 11:50:45', 'Pembayaran', 'Edit Pembayaran Berhasil'),
+(869, 47, '2025-05-28 12:28:26', 'Pembayaran', 'Input Pembayaran Berhasil'),
+(870, 47, '2025-05-28 13:20:59', 'Transaksi', 'Input Transaksi  20 Berhasil'),
+(871, 47, '2025-05-28 13:22:32', 'Transaksi', 'Input Transaksi  21 Berhasil'),
+(872, 47, '2025-05-28 13:48:30', 'Transaksi', 'Input Transaksi  22 Berhasil'),
+(873, 47, '2025-05-28 13:49:38', 'Transaksi', 'Input Transaksi  23 Berhasil'),
+(874, 47, '2025-06-02 09:31:53', 'Login', 'koperasikai@gmail.com Berhasil Melakukan Login'),
+(875, 47, '2025-06-02 10:03:42', 'Transaksi', 'Input Transaksi  24 Berhasil'),
+(876, 47, '2025-06-02 10:05:03', 'Transaksi', 'Input Transaksi  25 Berhasil'),
+(877, 47, '2025-06-02 10:08:43', 'Transaksi', 'Input Transaksi  26 Berhasil'),
+(878, 47, '2025-06-02 10:13:29', 'Transaksi', 'Input Transaksi  27 Berhasil');
 
 -- --------------------------------------------------------
 
@@ -1744,8 +1769,8 @@ INSERT INTO `log_email` (`id_log_email`, `nama`, `email`, `subjek`, `pesan`, `da
 --
 
 CREATE TABLE `lupa_password` (
-  `id_lupa_password` int(10) NOT NULL,
-  `id_akses_anggota` int(20) NOT NULL,
+  `id_lupa_password` int(11) NOT NULL,
+  `id_akses_anggota` int(11) NOT NULL,
   `tanggal_dibuat` varchar(25) NOT NULL,
   `tanggal_expired` varchar(25) NOT NULL,
   `code_unik` text NOT NULL
@@ -1758,8 +1783,8 @@ CREATE TABLE `lupa_password` (
 --
 
 CREATE TABLE `notifikasi` (
-  `id_notifikasi` int(20) NOT NULL,
-  `id_akses` int(20) NOT NULL,
+  `id_notifikasi` int(11) NOT NULL,
+  `id_akses` int(11) NOT NULL,
   `datetime_notifikasi` varchar(30) NOT NULL,
   `kategori_notifikasi` text NOT NULL,
   `notifikasi` text NOT NULL,
@@ -1801,17 +1826,17 @@ CREATE TABLE `pembelian_detail` (
 --
 
 CREATE TABLE `pinjaman` (
-  `id_pinjaman` int(15) NOT NULL,
-  `id_anggota` int(15) NOT NULL,
-  `id_akses` int(15) NOT NULL,
+  `id_pinjaman` int(11) NOT NULL,
+  `id_anggota` int(11) NOT NULL,
+  `id_akses` int(11) NOT NULL,
   `tanggal_pinjaman` varchar(30) NOT NULL,
   `tanggal_input` varchar(30) NOT NULL,
   `nama` text NOT NULL,
-  `jumlah_pinjaman` int(15) NOT NULL,
-  `persen_jasa` int(15) NOT NULL,
-  `estimasi_jasa` int(15) DEFAULT NULL,
-  `nilai_angsuran` int(15) NOT NULL,
-  `periode_angsuran` int(15) NOT NULL,
+  `jumlah_pinjaman` int(11) NOT NULL,
+  `persen_jasa` int(11) NOT NULL,
+  `estimasi_jasa` int(11) DEFAULT NULL,
+  `nilai_angsuran` int(11) NOT NULL,
+  `periode_angsuran` int(11) NOT NULL,
   `token` text NOT NULL,
   `status` varchar(25) NOT NULL COMMENT 'Pending, Active, Lunas, Macet'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -1821,7 +1846,8 @@ CREATE TABLE `pinjaman` (
 --
 
 INSERT INTO `pinjaman` (`id_pinjaman`, `id_anggota`, `id_akses`, `tanggal_pinjaman`, `tanggal_input`, `nama`, `jumlah_pinjaman`, `persen_jasa`, `estimasi_jasa`, `nilai_angsuran`, `periode_angsuran`, `token`, `status`) VALUES
-(1, 33, 44, '2025-05-16', '2025-05-16 07:28', 'ajeng21', 12000, 2, 4000, 3000, 4, '1747373299', 'Active');
+(1, 33, 47, '2025-05-28', '2025-05-28 04:33', 'anggota4', 1500000, 5, 75000, 525000, 3, '1748406788', 'Active'),
+(2, 35, 47, '2025-05-28', '2025-05-28 04:33', 'Anggota1', 2000000, 5, 100000, 700000, 3, '1748406831', 'Active');
 
 -- --------------------------------------------------------
 
@@ -1830,13 +1856,13 @@ INSERT INTO `pinjaman` (`id_pinjaman`, `id_anggota`, `id_akses`, `tanggal_pinjam
 --
 
 CREATE TABLE `pinjaman_angsuran` (
-  `id_pinjaman_angsuran` int(15) NOT NULL,
-  `id_pinjaman` int(15) NOT NULL,
-  `id_anggota` int(15) NOT NULL,
-  `id_akses` int(15) DEFAULT NULL,
+  `id_pinjaman_angsuran` int(11) NOT NULL,
+  `id_pinjaman` int(11) NOT NULL,
+  `id_anggota` int(11) NOT NULL,
+  `id_akses` int(11) DEFAULT NULL,
   `tanggal` varchar(30) NOT NULL,
   `kategori_angsuran` varchar(25) NOT NULL COMMENT 'Pokok, Jasa, Denda',
-  `jumlah` int(15) NOT NULL,
+  `jumlah` int(11) NOT NULL,
   `datetime` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -1862,16 +1888,16 @@ INSERT INTO `pinjaman_angsuran` (`id_pinjaman_angsuran`, `id_pinjaman`, `id_angg
 --
 
 CREATE TABLE `setting_autojurnal` (
-  `id_setting_autojurnal` int(10) NOT NULL,
-  `id_akses` int(10) NOT NULL,
-  `trans_account1` int(10) DEFAULT NULL,
-  `cash_account1` int(10) DEFAULT NULL,
-  `debt_account1` int(10) DEFAULT NULL,
-  `receivables_account1` int(10) DEFAULT NULL,
-  `trans_account2` int(10) DEFAULT NULL,
-  `cash_account2` int(10) DEFAULT NULL,
-  `debt_account2` int(10) DEFAULT NULL,
-  `receivables_account2` int(10) DEFAULT NULL
+  `id_setting_autojurnal` int(11) NOT NULL,
+  `id_akses` int(11) NOT NULL,
+  `trans_account1` int(11) DEFAULT NULL,
+  `cash_account1` int(11) DEFAULT NULL,
+  `debt_account1` int(11) DEFAULT NULL,
+  `receivables_account1` int(11) DEFAULT NULL,
+  `trans_account2` int(11) DEFAULT NULL,
+  `cash_account2` int(11) DEFAULT NULL,
+  `debt_account2` int(11) DEFAULT NULL,
+  `receivables_account2` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -1889,7 +1915,7 @@ INSERT INTO `setting_autojurnal` (`id_setting_autojurnal`, `id_akses`, `trans_ac
 --
 
 CREATE TABLE `setting_email_gateway` (
-  `id_setting_email_gateway` int(10) NOT NULL,
+  `id_setting_email_gateway` int(11) NOT NULL,
   `email_gateway` text DEFAULT NULL,
   `password_gateway` varchar(20) DEFAULT NULL,
   `url_provider` text DEFAULT NULL,
@@ -1915,7 +1941,7 @@ INSERT INTO `setting_email_gateway` (`id_setting_email_gateway`, `email_gateway`
 --
 
 CREATE TABLE `setting_general` (
-  `id_setting_general` int(10) NOT NULL,
+  `id_setting_general` int(11) NOT NULL,
   `title_page` varchar(20) NOT NULL,
   `kata_kunci` text NOT NULL,
   `deskripsi` text NOT NULL,
@@ -1941,17 +1967,17 @@ INSERT INTO `setting_general` (`id_setting_general`, `title_page`, `kata_kunci`,
 --
 
 CREATE TABLE `shu_rincian` (
-  `id_shu_rincian` int(15) NOT NULL,
-  `id_shu_session` int(15) NOT NULL,
-  `id_anggota` int(15) NOT NULL,
+  `id_shu_rincian` int(11) NOT NULL,
+  `id_shu_session` int(11) NOT NULL,
+  `id_anggota` int(11) NOT NULL,
   `nama_anggota` text NOT NULL,
-  `simpanan` int(15) DEFAULT NULL,
-  `pinjaman` int(15) DEFAULT NULL,
-  `penjualan` int(15) DEFAULT NULL,
-  `jasa_simpanan` int(15) DEFAULT NULL,
-  `jasa_pinjaman` int(15) DEFAULT NULL,
-  `jasa_penjualan` int(15) DEFAULT NULL,
-  `shu` int(15) DEFAULT NULL
+  `simpanan` int(11) DEFAULT NULL,
+  `pinjaman` int(11) DEFAULT NULL,
+  `penjualan` int(11) DEFAULT NULL,
+  `jasa_simpanan` int(11) DEFAULT NULL,
+  `jasa_pinjaman` int(11) DEFAULT NULL,
+  `jasa_penjualan` int(11) DEFAULT NULL,
+  `shu` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -1973,21 +1999,21 @@ INSERT INTO `shu_rincian` (`id_shu_rincian`, `id_shu_session`, `id_anggota`, `na
 --
 
 CREATE TABLE `shu_session` (
-  `id_shu_session` int(15) NOT NULL,
+  `id_shu_session` int(11) NOT NULL,
   `sesi_shu` varchar(30) NOT NULL,
   `periode_hitung1` varchar(30) NOT NULL,
   `periode_hitung2` varchar(30) NOT NULL,
-  `modal_anggota` int(20) DEFAULT NULL,
-  `penjualan` int(20) DEFAULT NULL,
-  `pinjaman` int(20) DEFAULT NULL,
-  `jasa_modal_anggota` int(20) DEFAULT NULL,
-  `laba_penjualan` int(20) DEFAULT NULL,
-  `jasa_pinjaman` int(20) DEFAULT NULL,
-  `persen_usaha` int(20) DEFAULT NULL,
-  `persen_modal` int(20) DEFAULT NULL,
-  `persen_pinjaman` int(15) DEFAULT NULL,
-  `alokasi_hitung` int(20) DEFAULT NULL,
-  `alokasi_nyata` int(30) DEFAULT NULL,
+  `modal_anggota` int(11) DEFAULT NULL,
+  `penjualan` int(11) DEFAULT NULL,
+  `pinjaman` int(11) DEFAULT NULL,
+  `jasa_modal_anggota` int(11) DEFAULT NULL,
+  `laba_penjualan` int(11) DEFAULT NULL,
+  `jasa_pinjaman` int(11) DEFAULT NULL,
+  `persen_usaha` int(11) DEFAULT NULL,
+  `persen_modal` int(11) DEFAULT NULL,
+  `persen_pinjaman` int(11) DEFAULT NULL,
+  `alokasi_hitung` int(11) DEFAULT NULL,
+  `alokasi_nyata` int(11) DEFAULT NULL,
   `status` varchar(20) NOT NULL COMMENT 'Pending, Realisasi'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -2005,9 +2031,9 @@ INSERT INTO `shu_session` (`id_shu_session`, `sesi_shu`, `periode_hitung1`, `per
 --
 
 CREATE TABLE `simpanan` (
-  `id_simpanan` int(15) NOT NULL,
-  `id_anggota` int(15) NOT NULL,
-  `id_akses` int(15) NOT NULL,
+  `id_simpanan` int(11) NOT NULL,
+  `id_anggota` int(11) NOT NULL,
+  `id_akses` int(11) NOT NULL,
   `nama` text NOT NULL,
   `tanggal` varchar(30) NOT NULL,
   `kategori` varchar(30) NOT NULL COMMENT 'Simpanan Pokok\r\nSimpanan Wajib\r\nSimpanan Sukarela\r\nPenarikan',
@@ -2020,8 +2046,9 @@ CREATE TABLE `simpanan` (
 --
 
 INSERT INTO `simpanan` (`id_simpanan`, `id_anggota`, `id_akses`, `nama`, `tanggal`, `kategori`, `keterangan`, `jumlah`) VALUES
-(19, 33, 44, 'ajeng21', '2025-04-22', 'Simpanan Pokok', 'coba', '2000000'),
-(20, 34, 44, 'ajeng', '2025-05-16', 'Simpanan Sukarela', 'apa aja', '15000000');
+(1, 33, 47, 'anggota4', '2025-05-28', 'Simpanan Pokok', '', '150000'),
+(2, 34, 47, 'anggota3', '2025-05-28', 'Simpanan Wajib', '', '250000'),
+(3, 35, 47, 'Anggota1', '2025-05-28', 'Simpanan Sukarela', '', '200000');
 
 -- --------------------------------------------------------
 
@@ -2030,8 +2057,8 @@ INSERT INTO `simpanan` (`id_simpanan`, `id_anggota`, `id_akses`, `nama`, `tangga
 --
 
 CREATE TABLE `stok_opename` (
-  `id_stok_opename` int(15) NOT NULL,
-  `id_akses` int(15) NOT NULL,
+  `id_stok_opename` int(11) NOT NULL,
+  `id_akses` int(11) NOT NULL,
   `tanggal` varchar(30) NOT NULL,
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -2050,16 +2077,16 @@ INSERT INTO `stok_opename` (`id_stok_opename`, `id_akses`, `tanggal`, `status`) 
 --
 
 CREATE TABLE `stok_opename_barang` (
-  `id_stok_opename_barang` int(20) NOT NULL,
-  `id_stok_opename` int(20) NOT NULL,
-  `id_barang` int(20) NOT NULL,
+  `id_stok_opename_barang` int(11) NOT NULL,
+  `id_stok_opename` int(11) NOT NULL,
+  `id_barang` int(11) NOT NULL,
   `nama_barang` text NOT NULL,
   `satuan` varchar(25) NOT NULL,
-  `stok_awal` int(15) NOT NULL,
-  `stok_akhir` int(15) NOT NULL,
-  `stok_gap` int(15) NOT NULL,
-  `harga` int(15) NOT NULL,
-  `jumlah` int(20) NOT NULL
+  `stok_awal` int(11) NOT NULL,
+  `stok_akhir` int(11) NOT NULL,
+  `stok_gap` int(11) NOT NULL,
+  `harga` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -2165,7 +2192,7 @@ INSERT INTO `stok_opename_barang` (`id_stok_opename_barang`, `id_stok_opename`, 
 --
 
 CREATE TABLE `supplier` (
-  `id_supplier` int(10) NOT NULL,
+  `id_supplier` int(11) NOT NULL,
   `nama_supplier` text NOT NULL,
   `alamat_supplier` text DEFAULT NULL,
   `email_supplier` text DEFAULT NULL,
@@ -2191,15 +2218,15 @@ INSERT INTO `supplier` (`id_supplier`, `nama_supplier`, `alamat_supplier`, `emai
 --
 
 CREATE TABLE `transaksi` (
-  `id_transaksi` int(10) NOT NULL,
-  `id_akses` int(10) DEFAULT NULL,
-  `id_anggota` int(10) DEFAULT NULL,
-  `id_supplier` int(10) DEFAULT NULL,
+  `id_transaksi` int(11) NOT NULL,
+  `id_akses` int(11) DEFAULT NULL,
+  `id_anggota` int(11) DEFAULT NULL,
+  `id_supplier` int(11) DEFAULT NULL,
   `tanggal` varchar(25) DEFAULT NULL,
   `kategori` varchar(25) DEFAULT NULL,
-  `tagihan` int(15) DEFAULT NULL,
-  `pembayaran` int(15) DEFAULT NULL,
-  `kembalian` int(15) DEFAULT NULL,
+  `tagihan` int(11) DEFAULT NULL,
+  `pembayaran` int(11) DEFAULT NULL,
+  `kembalian` int(11) DEFAULT NULL,
   `metode` varchar(15) DEFAULT NULL,
   `keterangan` text DEFAULT NULL,
   `status` varchar(15) DEFAULT NULL
@@ -2210,8 +2237,13 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id_transaksi`, `id_akses`, `id_anggota`, `id_supplier`, `tanggal`, `kategori`, `tagihan`, `pembayaran`, `kembalian`, `metode`, `keterangan`, `status`) VALUES
-(16, 1, 5, 0, '2023-02-23 14:18', 'Penjualan', 52250, 52250, 0, 'Cash', '', 'Lunas'),
-(17, 1, 5, 0, '2022-02-02 14:19', 'Penjualan', 17072, 17072, 0, 'Cash', '', 'Lunas');
+(18, 47, 35, 0, '2025-05-28 04:08', 'Penjualan', 6900, 10000, 3100, 'Cash', '', 'Lunas'),
+(19, 47, 0, 17, '2025-05-28 04:45', 'Pembelian', 745250, 750000, 4750, 'Cash', 'pembelian barang dari supplier', 'Lunas'),
+(20, 47, 0, 16, '2025-05-28 08:20', 'Pembelian', 67750, 75000, 7250, 'Cash', '', 'Lunas'),
+(21, 47, 0, 0, '2025-05-28 08:22', 'Penjualan', 10000, 10000, 0, 'Cash', '', 'Lunas'),
+(22, 47, 0, 0, '2025-05-28 08:48', 'Penjualan', 4500, 5000, 500, 'Cash', '', 'Lunas'),
+(23, 47, 35, 0, '2025-05-28 08:49', 'Penjualan', 2600, 3000, 400, 'Cash', '', 'Lunas'),
+(24, 47, 0, 16, '2025-06-02 05:03', 'Pembelian', 800000, 800000, 0, 'Cash', 'pembelian supplier', 'Lunas');
 
 -- --------------------------------------------------------
 
@@ -2220,15 +2252,15 @@ INSERT INTO `transaksi` (`id_transaksi`, `id_akses`, `id_anggota`, `id_supplier`
 --
 
 CREATE TABLE `transaksi_pembayaran` (
-  `id_pembayaran` int(10) NOT NULL,
-  `id_transaksi` int(10) DEFAULT NULL,
-  `id_akses` int(10) DEFAULT NULL,
-  `id_anggota` int(15) DEFAULT NULL,
-  `id_supplier` int(15) DEFAULT NULL,
+  `id_pembayaran` int(11) NOT NULL,
+  `id_transaksi` int(11) DEFAULT NULL,
+  `id_akses` int(11) DEFAULT NULL,
+  `id_anggota` int(11) DEFAULT NULL,
+  `id_supplier` int(11) DEFAULT NULL,
   `kategori` varchar(20) DEFAULT NULL,
   `tanggal` varchar(30) NOT NULL,
   `metode` varchar(20) NOT NULL,
-  `jumlah` int(15) DEFAULT NULL,
+  `jumlah` int(11) DEFAULT NULL,
   `keterangan` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -2237,10 +2269,11 @@ CREATE TABLE `transaksi_pembayaran` (
 --
 
 INSERT INTO `transaksi_pembayaran` (`id_pembayaran`, `id_transaksi`, `id_akses`, `id_anggota`, `id_supplier`, `kategori`, `tanggal`, `metode`, `jumlah`, `keterangan`) VALUES
-(33, 13, 1, 32, 0, 'Penjualan', '2023-02-14 14:31', 'Cash', 2860, ''),
-(34, 14, 1, 5, 0, 'Penjualan', '2022-01-01 14:16', 'Cash', 16665, ''),
-(35, 15, 1, 5, 0, 'Penjualan', '2023-02-23 14:17', 'Cash', 7920, ''),
-(36, 16, 1, 5, 0, 'Penjualan', '2023-02-23 14:18', 'Cash', 52250, '');
+(40, 18, 47, 35, 0, 'Penjualan', '2025-05-28 04:08', 'Cash', 6900, ''),
+(41, 19, 47, 0, 17, 'Pembelian', '2025-05-28 04:45', 'Cash', 745250, ''),
+(43, 20, 47, 0, 16, 'Pembelian', '2025-05-28 08:20', 'Cash', 67750, ''),
+(46, 23, 47, 35, 0, 'Penjualan', '2025-05-28 08:49', 'Cash', 2600, ''),
+(47, 24, 47, 0, 16, 'Pembelian', '2025-06-02 05:03', 'Cash', 800000, '');
 
 -- --------------------------------------------------------
 
@@ -2249,11 +2282,11 @@ INSERT INTO `transaksi_pembayaran` (`id_pembayaran`, `id_transaksi`, `id_akses`,
 --
 
 CREATE TABLE `transaksi_ppn` (
-  `id_transaksi_ppn` int(15) NOT NULL,
-  `id_transaksi` int(15) DEFAULT NULL,
-  `id_akses` int(15) NOT NULL,
-  `ppn_persen` int(15) NOT NULL,
-  `ppn_rp` int(15) NOT NULL
+  `id_transaksi_ppn` int(11) NOT NULL,
+  `id_transaksi` int(11) DEFAULT NULL,
+  `id_akses` int(11) NOT NULL,
+  `ppn_persen` int(11) NOT NULL,
+  `ppn_rp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -2262,7 +2295,8 @@ CREATE TABLE `transaksi_ppn` (
 
 INSERT INTO `transaksi_ppn` (`id_transaksi_ppn`, `id_transaksi`, `id_akses`, `ppn_persen`, `ppn_rp`) VALUES
 (1, 0, 1, 10, 673333),
-(3, 7, 1, 10, 11400);
+(3, 7, 1, 10, 11400),
+(4, 0, 47, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2271,21 +2305,21 @@ INSERT INTO `transaksi_ppn` (`id_transaksi_ppn`, `id_transaksi`, `id_akses`, `pp
 --
 
 CREATE TABLE `transaksi_rincian` (
-  `id_transaksi_rincian` int(15) NOT NULL,
+  `id_transaksi_rincian` int(11) NOT NULL,
   `id_transaksi` varchar(15) DEFAULT NULL,
   `id_akses` varchar(10) DEFAULT NULL,
   `id_barang` varchar(15) DEFAULT NULL,
   `id_barang_harga` varchar(15) DEFAULT NULL,
   `id_barang_satuan` varchar(15) DEFAULT NULL,
-  `id_anggota` int(10) DEFAULT NULL,
-  `id_supplier` int(10) DEFAULT NULL,
+  `id_anggota` int(11) DEFAULT NULL,
+  `id_supplier` int(11) DEFAULT NULL,
   `tanggal` varchar(30) DEFAULT NULL,
   `kategori_rincian` varchar(20) DEFAULT NULL COMMENT 'Barang, Lainnya',
   `nama_barang` text DEFAULT NULL,
-  `harga` int(15) DEFAULT NULL,
-  `qty` int(15) DEFAULT NULL,
+  `harga` int(11) DEFAULT NULL,
+  `qty` int(11) DEFAULT NULL,
   `satuan` varchar(20) DEFAULT NULL,
-  `jumlah` int(15) DEFAULT NULL,
+  `jumlah` int(11) DEFAULT NULL,
   `updatetime` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -2299,10 +2333,14 @@ INSERT INTO `transaksi_rincian` (`id_transaksi_rincian`, `id_transaksi`, `id_aks
 (47, '14', '1', '77', '0', '0', 5, 0, '2022-01-01 14:16', 'Barang', 'Rexona Free Spirit 50ml', 13550, 1, 'BH', 13550, '2023-02-23 21:16:17'),
 (48, '14', '1', '74', '0', '0', 5, 0, '2022-01-01 14:16', 'Barang', 'Sunlight Lime Pouch 95ml', 1600, 2, 'BKS', 1600, '2023-02-23 21:16:35'),
 (49, '15', '1', '45', '0', '0', 5, 0, '2023-02-23 14:17', 'Barang', 'Bango Manis 60ml', 2400, 3, 'pcs', 7200, '2023-02-23 21:17:30'),
-(50, '16', '1', '53', '0', '0', 5, 0, '2023-02-23 14:18', 'Barang', 'Rinso Anti Noda 430g', 9500, 5, 'PCS', 47500, '2023-02-23 21:18:27'),
-(51, '17', '1', '41', '0', '0', 5, 0, '2022-02-02 14:19', 'Barang', 'Bango Pouch 400ml', 15520, 1, 'PCH', 15520, '2023-02-23 21:19:32'),
 (52, '18', '1', '3', '0', '0', 5, 0, '2023-02-23 14:20', 'Barang', 'Anlene Gold Cokelat 250g', 38000, 4, 'DUS', 152000, '2023-02-23 21:20:27'),
-(53, '19', '1', '91', '0', '0', 5, 0, '2023-02-23 14:45', 'Barang', 'Blue Band Serbaguna 200g', 6733333, 1, 'PCS', 6733333, '2023-02-23 21:45:45');
+(53, '19', '1', '91', '0', '0', 5, 0, '2023-02-23 14:45', 'Barang', 'Blue Band Serbaguna 200g', 6733333, 1, 'PCS', 6733333, '2023-02-23 21:45:45'),
+(54, '18', '47', '45', '76', '0', 0, 0, '2025-05-28 04:08', 'Barang', 'Bango Manis 60ml', 2400, 1, 'pcs', 2400, '2025-05-28 11:08:45'),
+(55, '18', '47', '15', '0', '0', 0, 0, '2025-05-28 04:08', 'Barang', 'Citra Rcg 9ml', 4500, 1, 'RCG', 4500, '2025-05-28 11:08:52'),
+(56, '19', '47', '75', '0', '0', 0, 17, '2025-05-28 04:45', 'Barang', 'Rexona Motionsense', 13550, 50, 'BH', 677500, '2025-05-28 11:45:17'),
+(57, '21', '47', '91', '0', '0', 0, 0, '2025-05-28 08:22', 'Barang', 'Blue Band Serbaguna 200g', 10000, 1, 'PCS', 10000, '2025-05-28 13:21:30'),
+(58, '22', '47', '15', '0', '0', 0, 0, '2025-05-28 08:48', 'Barang', 'Citra Rcg 9ml', 4500, 1, 'RCG', 4500, '2025-05-28 13:48:00'),
+(59, '23', '47', '1', '0', '0', 35, 0, '2025-05-28 08:49', 'Barang', 'Boneeto Stoberi 115ml', 2600, 1, 'KTK', 2600, '2025-05-28 13:49:17');
 
 -- --------------------------------------------------------
 
@@ -2311,15 +2349,15 @@ INSERT INTO `transaksi_rincian` (`id_transaksi_rincian`, `id_transaksi`, `id_aks
 --
 
 CREATE TABLE `transaksi_sementara` (
-  `id_transaksi_sementara` int(10) NOT NULL,
-  `id_akses` int(10) NOT NULL,
-  `id_anggota` int(10) DEFAULT NULL,
-  `id_supplier` int(10) DEFAULT NULL,
+  `id_transaksi_sementara` int(11) NOT NULL,
+  `id_akses` int(11) NOT NULL,
+  `id_anggota` int(11) DEFAULT NULL,
+  `id_supplier` int(11) DEFAULT NULL,
   `tanggal` varchar(25) DEFAULT NULL,
   `kategori` varchar(25) DEFAULT NULL,
   `metode` varchar(25) DEFAULT NULL,
   `keterangan` text DEFAULT NULL,
-  `pembayaran` int(15) DEFAULT NULL,
+  `pembayaran` int(11) DEFAULT NULL,
   `status` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -2330,10 +2368,10 @@ CREATE TABLE `transaksi_sementara` (
 --
 
 CREATE TABLE `transaksi_setting` (
-  `id_transaksi_setting` int(15) NOT NULL,
-  `id_akses` int(15) NOT NULL,
+  `id_transaksi_setting` int(11) NOT NULL,
+  `id_akses` int(11) NOT NULL,
   `ppn` varchar(20) NOT NULL,
-  `ppn_set_persen` int(10) DEFAULT NULL
+  `ppn_set_persen` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -2341,7 +2379,8 @@ CREATE TABLE `transaksi_setting` (
 --
 
 INSERT INTO `transaksi_setting` (`id_transaksi_setting`, `id_akses`, `ppn`, `ppn_set_persen`) VALUES
-(1, 1, 'Yes', 10);
+(1, 1, 'Yes', 10),
+(2, 47, 'No', 0);
 
 --
 -- Indexes for dumped tables
@@ -2598,109 +2637,109 @@ ALTER TABLE `transaksi_setting`
 -- AUTO_INCREMENT for table `akses`
 --
 ALTER TABLE `akses`
-  MODIFY `id_akses` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id_akses` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `akses_anggota`
 --
 ALTER TABLE `akses_anggota`
-  MODIFY `id_akses_anggota` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_akses_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `akses_entitas`
 --
 ALTER TABLE `akses_entitas`
-  MODIFY `id_akses_entitas` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
+  MODIFY `id_akses_entitas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
 
 --
 -- AUTO_INCREMENT for table `akses_referensi`
 --
 ALTER TABLE `akses_referensi`
-  MODIFY `id_akses_referensi` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_akses_referensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `akses_validasi`
 --
 ALTER TABLE `akses_validasi`
-  MODIFY `id_akses_validasi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_akses_validasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `akun_perkiraan`
 --
 ALTER TABLE `akun_perkiraan`
-  MODIFY `id_perkiraan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
+  MODIFY `id_perkiraan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
 
 --
 -- AUTO_INCREMENT for table `anggota`
 --
 ALTER TABLE `anggota`
-  MODIFY `id_anggota` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `auto_jurnal`
 --
 ALTER TABLE `auto_jurnal`
-  MODIFY `id_auto_jurnal` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_auto_jurnal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `barang_bacth`
 --
 ALTER TABLE `barang_bacth`
-  MODIFY `id_barang_bacth` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_barang_bacth` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `barang_harga`
 --
 ALTER TABLE `barang_harga`
-  MODIFY `id_barang_harga` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `id_barang_harga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT for table `barang_kategori_harga`
 --
 ALTER TABLE `barang_kategori_harga`
-  MODIFY `id_barang_kategori_harga` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_barang_kategori_harga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `barang_satuan`
 --
 ALTER TABLE `barang_satuan`
-  MODIFY `id_barang_satuan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_barang_satuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `dokumentasi_api`
 --
 ALTER TABLE `dokumentasi_api`
-  MODIFY `id_dokumentasi_api` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_dokumentasi_api` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `help`
 --
 ALTER TABLE `help`
-  MODIFY `id_help` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_help` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `help_access`
 --
 ALTER TABLE `help_access`
-  MODIFY `id_help_access` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_help_access` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `jurnal`
 --
 ALTER TABLE `jurnal`
-  MODIFY `id_jurnal` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id_jurnal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id_log` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=858;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=879;
 
 --
 -- AUTO_INCREMENT for table `log_email`
@@ -2712,13 +2751,13 @@ ALTER TABLE `log_email`
 -- AUTO_INCREMENT for table `lupa_password`
 --
 ALTER TABLE `lupa_password`
-  MODIFY `id_lupa_password` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_lupa_password` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `notifikasi`
 --
 ALTER TABLE `notifikasi`
-  MODIFY `id_notifikasi` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_notifikasi` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pembelian`
@@ -2736,103 +2775,103 @@ ALTER TABLE `pembelian_detail`
 -- AUTO_INCREMENT for table `pinjaman`
 --
 ALTER TABLE `pinjaman`
-  MODIFY `id_pinjaman` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pinjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `pinjaman_angsuran`
 --
 ALTER TABLE `pinjaman_angsuran`
-  MODIFY `id_pinjaman_angsuran` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_pinjaman_angsuran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `setting_autojurnal`
 --
 ALTER TABLE `setting_autojurnal`
-  MODIFY `id_setting_autojurnal` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_setting_autojurnal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `setting_email_gateway`
 --
 ALTER TABLE `setting_email_gateway`
-  MODIFY `id_setting_email_gateway` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_setting_email_gateway` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `setting_general`
 --
 ALTER TABLE `setting_general`
-  MODIFY `id_setting_general` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_setting_general` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `shu_rincian`
 --
 ALTER TABLE `shu_rincian`
-  MODIFY `id_shu_rincian` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id_shu_rincian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `shu_session`
 --
 ALTER TABLE `shu_session`
-  MODIFY `id_shu_session` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_shu_session` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `simpanan`
 --
 ALTER TABLE `simpanan`
-  MODIFY `id_simpanan` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_simpanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `stok_opename`
 --
 ALTER TABLE `stok_opename`
-  MODIFY `id_stok_opename` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_stok_opename` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `stok_opename_barang`
 --
 ALTER TABLE `stok_opename_barang`
-  MODIFY `id_stok_opename_barang` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id_stok_opename_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id_supplier` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `transaksi_pembayaran`
 --
 ALTER TABLE `transaksi_pembayaran`
-  MODIFY `id_pembayaran` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `transaksi_ppn`
 --
 ALTER TABLE `transaksi_ppn`
-  MODIFY `id_transaksi_ppn` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_transaksi_ppn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `transaksi_rincian`
 --
 ALTER TABLE `transaksi_rincian`
-  MODIFY `id_transaksi_rincian` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id_transaksi_rincian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `transaksi_sementara`
 --
 ALTER TABLE `transaksi_sementara`
-  MODIFY `id_transaksi_sementara` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_transaksi_sementara` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `transaksi_setting`
 --
 ALTER TABLE `transaksi_setting`
-  MODIFY `id_transaksi_setting` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_transaksi_setting` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
